@@ -1,0 +1,8 @@
+name = input('what is you name?\n')
+surname = input ('what is you suename?\n')
+collyegeyers = input ('what is you collyege year?\n')
+code = input ('what is you code?\n')
+print('My name is :%s.'%name)
+print('My surname is :%s.'%surname)
+print('My collyege year is :%s.'%collyegeyers)
+print('My code is :%s.'%code)
