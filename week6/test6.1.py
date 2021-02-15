@@ -1,16 +1,8 @@
 import sqlite3
 from os import close, name, system
 from sqlite3.dbapi2 import connect
-conn = sqlite3.connect(r"")
-#c = conn.cursor()
-#c.execute ('''CREATE TABLE users (id integer PRIMARY KEY AUTOINCREMENT,
-    #fname varchar(100) NOT NULL,
-    #lName varchar(100) NOT NULL,
-    #email varchar(100) NOT NULL,
-    #Sex varchar(100) NOT NULL,
-    #Age varchar(100) NOT NULL)''')
-#conn.commit()
-#conn.close()
+conn = sqlite3.connect(r"D:\salintorn_python\week6\test6.1.db")
+
 def shoose():
     global shoose_no
     shoose_no = input('\tกรุณาใส่หมายเลขนักเรียนที่ต้องการแก้ไข : ')
@@ -50,7 +42,7 @@ def nime1():
     Age = data2[4]
 def insert (fname,lName,email,Sex,Age) :
     try :
-        conn = sqlite3.connect (r"")
+        conn = sqlite3.connect (r"D:\salintorn_python\week6\test6.1.db")
         c = conn.cursor()
 
         sql = '''INSERT INTO users (fname,lname,email,Sex,Age) VALUES (?,?,?,?,?)'''
@@ -67,7 +59,7 @@ def insert (fname,lName,email,Sex,Age) :
 def show():
     print('\n\t\t\t*** แสดงข้อมูลนักเรียน ***\n')
     print('{0:<8}{1:<15}{2:<15}{3:<27}{4:<10}{5}\n'.format('No','fname','lname','email','Sex','Age'))
-    with sqlite3.connect(r"D:\Narawit_Python\Week6\Work6.db") as con:
+    with sqlite3.connect(r"D:\salintorn_python\week6\test6.1.db") as con:
         con.row_factory = sqlite3.Row
         show1="SELECT * FROM users "
         for row in con.execute(show1):
@@ -75,7 +67,7 @@ def show():
 def edit() :
     shoose()
     nime1()
-    conn = sqlite3.connect (r"D:\Narawit_Python\Week6\Work6.db")
+    conn = sqlite3.connect (r"D:\salintorn_python\week6\test6.1.db")
     c = conn.cursor()
     update_data = (fname,lName,email,Sex,Age,shoose_no)
     c.execute ('''UPDATE users SET fname = ?,lName = ?,email = ?,Sex = ?,Age = ? WHERE NO = ?''',update_data)
@@ -83,7 +75,7 @@ def edit() :
     conn.close()
 def delete():
     shoose1()
-    conn = sqlite3.connect(r"D:\Narawit_Python\Week6\Work6.db")
+    conn = sqlite3.connect(r"D:\salintorn_python\week6\test6.1.db")
     c = conn.cursor()
     c.execute('''DELETE FROM users WHERE No = ?''',number)
     conn.commit()
