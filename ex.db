@@ -1,0 +1,2 @@
+import sqliste3
+conn = sqliste3.connect

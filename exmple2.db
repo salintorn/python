@@ -1,0 +1,34 @@
+import sqlite3 #import sqlite
+conn = sqlite3.connect ("D:\salintorn_python\exmple2.db")
+c = conn.cursor() #create a cursor object
+c.execute('''CREAT TABLE users(id integer PRIMARY KEY AUTOINCREMENT,
+    fname varchar(30) NOT NOLL,
+    lname varchar(30) NOT NOLL,
+    email varchar(100) NOT NOLL )''')
+conn.commit () #save (commit) the change
+conn.close () #close the connection when
+INSERT INTO tablt_name ( column1 , column2 , column3 ,...)
+    VALUES ( value1 , value2 , value3 ,...)
+
+import sqlite3
+
+def insertTousers (fname,lname,email) :
+    try :
+        conn = sqlite3.connect (r"D:\salintorn_python\exmple.db")
+        c = conn.cursor()
+
+        sql = (''' INSERT INTO users (fname,lname,email) VALUES (,?,?)''')
+        data = (fname,lname,email)
+        c.execute(sql,data)
+        conn.commit ()
+        c.close ()
+
+    except sqlite3.Error as e :
+        print('Failend to insert : ',e)
+    finally :
+
+        if conn :
+            conn.close ()
+
+insertTousers('pack','salintorn','salintorn.f@kkumail.com')
+insertTousers ('pack','salintorn','abc')
